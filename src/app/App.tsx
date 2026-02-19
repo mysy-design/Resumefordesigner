@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { Routes, Route, useNavigate, Link } from 'react-router';
 import ForecastConfiguration from './components/ForecastConfiguration';
 import ClariInspect from './components/ClariInspect';
 import ResumeRedesignForDesigner from '../imports/ResumeRedesignForDesigner-37-1435';
@@ -24,7 +25,7 @@ const projects = [
     description: 'Designed a self-service configuration experience that replaced manual, support-led forecasting setup, enabling customers to manage complex forecasting logic independently and at scale.',
     image: forecastConfigImage,
     hasCase: true,
-    link: 'forecast-configuration'
+    link: '/case-study/forecast-configuration'
   },
   {
     id: 2,
@@ -32,7 +33,7 @@ const projects = [
     description: 'Led a comprehensive UX audit of Clari\'s core Inspect product and drove high-impact workflow improvements to increase usability, editing efficiency, and feature adoption.',
     image: inspectImage,
     hasCase: true,
-    link: 'inspect'
+    link: '/case-study/inspect'
   },
   {
     id: 3,
@@ -40,7 +41,7 @@ const projects = [
     description: 'TruckX Fleet is designed for fleet managers and dispatchers to view and manage their drivers\' logs, track their location, and optimize utilization.',
     image: truckxImage,
     hasCase: true,
-    link: 'forecast-configuration'
+    link: null
   },
   {
     id: 4,
@@ -84,80 +85,16 @@ const projects = [
   }
 ];
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const resumeRef = useRef<HTMLDivElement>(null);
-
-  // Scroll to top whenever the page changes
+// Scroll to top on every route render
+function ScrollToTop() {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentPage]);
+  }, []);
+  return null;
+}
 
-  // If viewing project detail
-  if (currentPage === 'forecast-configuration') {
-    return <ForecastConfiguration onBack={() => setCurrentPage('home')} />;
-  }
-  if (currentPage === 'inspect') {
-    return <ClariInspect onBack={() => setCurrentPage('home')} />;
-  }
-  if (currentPage === 'resume') {
-    const handleDownloadPDF = async () => {
-      if (!resumeRef.current) return;
-      
-      try {
-        const canvas = await html2canvas(resumeRef.current, {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: '#ffffff'
-        });
-        
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF({
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4'
-        });
-        
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-        const imgX = (pdfWidth - imgWidth * ratio) / 2;
-        const imgY = 0;
-        
-        pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-        pdf.save('YangSun_ProductDesigner_Resume.pdf');
-      } catch (error) {
-        console.error('Error generating PDF:', error);
-      }
-    };
-
-    return (
-      <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center py-12">
-        <div className="relative">
-          <div className="absolute -top-12 left-0 right-0 flex items-center justify-between">
-            <button 
-              onClick={() => setCurrentPage('home')}
-              className="text-[#666666] hover:text-[#1a1a1a] transition-colors text-sm"
-            >
-              ← Back to home
-            </button>
-            <button 
-              onClick={handleDownloadPDF}
-              className="flex items-center gap-2 px-4 py-2 bg-[#3700ff] text-white text-sm rounded hover:bg-[#2d00cc] transition-colors"
-            >
-              <Download size={16} />
-              Download PDF
-            </button>
-          </div>
-          <div ref={resumeRef} className="scale-100 origin-top">
-            <ResumeRedesignForDesigner />
-          </div>
-        </div>
-      </div>
-    );
-  }
+function HomePage() {
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -170,12 +107,8 @@ export default function App() {
               <span>Yang Sun</span>
               <style>{`
                 @keyframes spin {
-                  from {
-                    transform: rotate(0deg);
-                  }
-                  to {
-                    transform: rotate(360deg);
-                  }
+                  from { transform: rotate(0deg); }
+                  to { transform: rotate(360deg); }
                 }
                 .sun-spin {
                   display: inline-block;
@@ -190,14 +123,13 @@ export default function App() {
               <a href="#work" className="text-[14px] text-[#1a1a1a] hover:opacity-60 transition-opacity">
                 Work
               </a>
-              <a 
-                href="#" 
+              <Link
+                to="/resume"
                 className="flex items-center gap-2 text-[14px] text-[#3700ff] hover:opacity-60 transition-opacity"
-                onClick={() => setCurrentPage('resume')}
               >
                 <Download size={16} />
                 <span>Resume</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -206,7 +138,6 @@ export default function App() {
       {/* Hero Section */}
       <section id="home" className="bg-white">
         <div className="max-w-[1100px] mx-auto px-6 sm:px-12 pt-24 pb-20">
-          {/* Quote */}
           <div className="max-w-[900px]">
             <style>{`
               .highlight-word {
@@ -218,7 +149,6 @@ export default function App() {
                 transition: transform 0.2s ease;
                 padding: 0 2px;
               }
-              
               .highlight-word:hover {
                 transform: translateY(-2px);
               }
@@ -236,20 +166,20 @@ export default function App() {
       <section id="work" className="max-w-[1100px] mx-auto px-6 sm:px-12 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
           {projects.map(project => (
-            <div 
-              key={project.id} 
-              onClick={() => project.link && setCurrentPage(project.link)}
-              className="bg-[#f5f5f5] rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            <div
+              key={project.id}
+              onClick={() => project.link && navigate(project.link)}
+              className={`bg-[#f5f5f5] rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${project.link ? 'cursor-pointer' : 'cursor-default'}`}
             >
               {/* Project Image */}
               <div className="bg-[#ebebeb] rounded-lg overflow-hidden mb-6 aspect-[4/3] flex items-center justify-center">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               {/* Project Info */}
               <div>
                 <h3 className="text-[22px] text-[#1a1a1a] mb-3" style={{ fontWeight: 600 }}>
@@ -258,11 +188,23 @@ export default function App() {
                 <p className="text-[#666666] text-[14px] leading-[1.6] mb-5">
                   {project.description}
                 </p>
-                
+
                 {/* Case Study Button */}
-                {project.hasCase && (
+                {project.hasCase && project.link && (
                   <button
-                    className="px-6 py-2 bg-white border border-[#d0d0d0] text-[#1a1a1a] text-[13px] hover:bg-[#f5f5f5] transition-colors rounded-sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(project.link!);
+                    }}
+                    className="px-6 py-2 bg-white border border-[#d0d0d0] text-[#1a1a1a] text-[13px] hover:bg-[#f0f0f0] transition-colors rounded-sm"
+                  >
+                    Case Study
+                  </button>
+                )}
+                {project.hasCase && !project.link && (
+                  <button
+                    className="px-6 py-2 bg-white border border-[#d0d0d0] text-[#cccccc] text-[13px] rounded-sm cursor-not-allowed"
+                    disabled
                   >
                     Case Study
                   </button>
@@ -279,15 +221,15 @@ export default function App() {
           <p className="text-[#999999] text-[13px] mb-1">
             Send a message at
           </p>
-          <a 
-            href="mailto:yangsunwnm@gmail.com" 
+          <a
+            href="mailto:yangsunwnm@gmail.com"
             className="text-[#1a1a1a] text-[14px] hover:opacity-60 transition-opacity"
           >
             yangsunwnm@gmail.com
           </a>
           <div className="mt-8 flex justify-center">
-            <a 
-              href="https://www.linkedin.com/in/yang-sun-design" 
+            <a
+              href="https://www.linkedin.com/in/yang-sun-design"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#3700ff] hover:opacity-60 transition-all"
@@ -303,5 +245,67 @@ export default function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function ResumePage() {
+  const navigate = useNavigate();
+  const resumeRef = useRef<HTMLDivElement>(null);
+
+  const handleDownloadPDF = async () => {
+    if (!resumeRef.current) return;
+    try {
+      const canvas = await html2canvas(resumeRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const ratio = Math.min(pdfWidth / canvas.width, pdfHeight / canvas.height);
+      const imgX = (pdfWidth - canvas.width * ratio) / 2;
+      pdf.addImage(imgData, 'PNG', imgX, 0, canvas.width * ratio, canvas.height * ratio);
+      pdf.save('YangSun_ProductDesigner_Resume.pdf');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center py-12">
+      <div className="relative">
+        <div className="absolute -top-12 left-0 right-0 flex items-center justify-between">
+          <button
+            onClick={() => navigate('/')}
+            className="text-[#666666] hover:text-[#1a1a1a] transition-colors text-sm"
+          >
+            ← Back to home
+          </button>
+          <button
+            onClick={handleDownloadPDF}
+            className="flex items-center gap-2 px-4 py-2 bg-[#3700ff] text-white text-sm rounded hover:bg-[#2d00cc] transition-colors"
+          >
+            <Download size={16} />
+            Download PDF
+          </button>
+        </div>
+        <div ref={resumeRef} className="scale-100 origin-top">
+          <ResumeRedesignForDesigner />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<><ScrollToTop /><HomePage /></>} />
+      <Route path="/case-study/forecast-configuration" element={<><ScrollToTop /><ForecastConfiguration onBack={() => history.back()} /></>} />
+      <Route path="/case-study/inspect" element={<><ScrollToTop /><ClariInspect onBack={() => history.back()} /></>} />
+      <Route path="/resume" element={<><ScrollToTop /><ResumePage /></>} />
+    </Routes>
   );
 }
