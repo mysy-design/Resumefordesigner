@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Routes, Route, useNavigate, Link } from 'react-router';
+import { Routes, Route, useNavigate } from 'react-router';
 import ForecastConfiguration from './components/ForecastConfiguration';
 import ClariInspect from './components/ClariInspect';
 import ResumeRedesignForDesigner from '../imports/ResumeRedesignForDesigner-37-1435';
@@ -109,13 +109,14 @@ function HomePage() {
               <a href="#work" className="text-[14px] text-[#1a1a1a] hover:opacity-60 transition-opacity">
                 Work
               </a>
-              <Link
-                to="/resume"
+              <a
+                href="/Resumefordesigner/YangSun_ProductDesigner_Resume.pdf"
+                download="YangSun_ProductDesigner_Resume.pdf"
                 className="flex items-center gap-2 text-[14px] text-[#3700ff] hover:opacity-60 transition-opacity"
               >
                 <Download size={16} />
                 <span>Resume</span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
