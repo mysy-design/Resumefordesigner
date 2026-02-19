@@ -110,7 +110,7 @@ function HomePage() {
                 Work
               </a>
               <a
-                href="/Resumefordesigner/YangSun_ProductDesigner_Resume.pdf"
+                href="/YangSun_ProductDesigner_Resume.pdf"
                 download="YangSun_ProductDesigner_Resume.pdf"
                 className="flex items-center gap-2 text-[14px] text-[#3700ff] hover:opacity-60 transition-opacity"
               >
