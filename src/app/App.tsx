@@ -106,7 +106,14 @@ function HomePage() {
 
             {/* Desktop Navigation */}
             <div className="flex items-center gap-8">
-              <a href="#work" className="text-[14px] text-[#1a1a1a] hover:opacity-60 transition-opacity">
+              <a
+                href="#work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-[14px] text-[#1a1a1a] hover:opacity-60 transition-opacity cursor-pointer"
+              >
                 Work
               </a>
               <a
