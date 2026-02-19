@@ -59,7 +59,8 @@ const projects = [
     description: 'Wer is a mobile app for new students to browse, search, and propose new student organizations.',
     image: werImage,
     hasCase: true,
-    link: null
+    link: null,
+    externalLink: 'http://yang-sundesign.com/wer.html'
   },
   {
     id: 6,
@@ -83,7 +84,8 @@ const projects = [
     description: 'Halo is a mobile app that supports pet owners through the end of their pet\'s journey.',
     image: haloImage,
     hasCase: true,
-    link: null
+    link: null,
+    externalLink: 'http://yang-sundesign.com/halo.html'
   }
 ];
 
