@@ -50,7 +50,8 @@ const projects = [
     description: 'Zoo is a mobile app helping the visitor to plan their visit ahead of time to the zoo.',
     image: zooImage,
     hasCase: true,
-    link: null
+    link: null,
+    externalLink: 'http://yang-sundesign.com/zoo.html'
   },
   {
     id: 5,
