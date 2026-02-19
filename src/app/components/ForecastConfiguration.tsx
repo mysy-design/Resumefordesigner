@@ -1,14 +1,14 @@
 import React from 'react';
-import caseVolumeImage from 'figma:asset/d39fe774e3fc4e4ebbf81136036d53f82efe230d.png';
-import readOnlyUIImage from 'figma:asset/ba8dec68151efb5d6818b4310a07c4e3b97586e1.png';
-import workflowDiagramImage from 'figma:asset/6f8a7ca6e30734b2b5c479086f7ccda85974bc31.png';
-import designFlow1Image from 'figma:asset/132c8568735bf92cf9469e36ffdbab7e7cba8e85.png';
-import designFlow2Image from 'figma:asset/c36483c2a01dfce15bf5c37b78510cfc4ed1133f.png';
-import jsonConfigImage from 'figma:asset/f76d5f084e46d9deb84996db3511a6c78b51ffa0.png';
-import editFieldSettingsImage from 'figma:asset/6d02d63e3e02e9608742e446b77037a091608453.png';
-import readOnlyFieldImage from 'figma:asset/f72f255e79c7d3dfe0b55c3a6893b33f971bf4a3.png';
-import reviewChangesImage from 'figma:asset/b2c9c93d845872cf691817c75b450ec2f35ef670.png';
-import guardrailsWarningImage from 'figma:asset/f865610b6b820d0dd7b7a7dcc53a66ace32954ba.png';
+import caseVolumeImage from '../../assets/d39fe774e3fc4e4ebbf81136036d53f82efe230d.png';
+import readOnlyUIImage from '../../assets/ba8dec68151efb5d6818b4310a07c4e3b97586e1.png';
+import workflowDiagramImage from '../../assets/6f8a7ca6e30734b2b5c479086f7ccda85974bc31.png';
+import designFlow1Image from '../../assets/132c8568735bf92cf9469e36ffdbab7e7cba8e85.png';
+import designFlow2Image from '../../assets/c36483c2a01dfce15bf5c37b78510cfc4ed1133f.png';
+import jsonConfigImage from '../../assets/f76d5f084e46d9deb84996db3511a6c78b51ffa0.png';
+import editFieldSettingsImage from '../../assets/6d02d63e3e02e9608742e446b77037a091608453.png';
+import readOnlyFieldImage from '../../assets/f72f255e79c7d3dfe0b55c3a6893b33f971bf4a3.png';
+import reviewChangesImage from '../../assets/b2c9c93d845872cf691817c75b450ec2f35ef670.png';
+import guardrailsWarningImage from '../../assets/f865610b6b820d0dd7b7a7dcc53a66ace32954ba.png';
 
 export default function ForecastConfiguration({ onBack }: { onBack: () => void }) {
   return (

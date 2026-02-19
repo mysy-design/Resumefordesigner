@@ -1,16 +1,16 @@
 import React from 'react';
-import demoFlowsImage from 'figma:asset/0aa12068f97f5c6b24d375792ed06bb5f8a754aa.png';
-import usabilityTestImage from 'figma:asset/a35d5a3eb1e7eca7b9a25c57042e7bcabe1e71d1.png';
-import designOpportunitiesImage from 'figma:asset/ba1f1fcb39ada4458f90e1699a9f9a2361a09ba9.png';
-import irisDesignSystemImage from 'figma:asset/4b869af23f6c7c97495fc8903cc8727a3fa34867.png';
-import beforeIrisImage from 'figma:asset/fea84ee8933ccb0e990f3ef173ff43481c176f27.png';
-import afterIrisImage from 'figma:asset/45703138588baa2dbfc0fd01b2b76737674d1620.png';
-import inlineEditingImage from 'figma:asset/f6e425edff364cc7cd50ba1f74bfc30bf3db5ec6.png';
-import detailPanelImage from 'figma:asset/79e63a1d22d5667699b96a19a5c8428139d88c4d.png';
-import savedViewImage from 'figma:asset/0aeab7d4f182c40087086a3783548432d6dadfda.png';
-import inspectAnythingImage from 'figma:asset/de93007e81a93a9f4f2830ab2bbe3f481ac01efb.png';
-import adoptionRateChart from 'figma:asset/ef69127d71a414cc81a8ee24801079604380e5d3.png';
-import linkedInPost from 'figma:asset/8dc52a220068a6d1f11c22cb0a6994e090c75941.png';
+import demoFlowsImage from '../../assets/0aa12068f97f5c6b24d375792ed06bb5f8a754aa.png';
+import usabilityTestImage from '../../assets/a35d5a3eb1e7eca7b9a25c57042e7bcabe1e71d1.png';
+import designOpportunitiesImage from '../../assets/ba1f1fcb39ada4458f90e1699a9f9a2361a09ba9.png';
+import irisDesignSystemImage from '../../assets/4b869af23f6c7c97495fc8903cc8727a3fa34867.png';
+import beforeIrisImage from '../../assets/fea84ee8933ccb0e990f3ef173ff43481c176f27.png';
+import afterIrisImage from '../../assets/45703138588baa2dbfc0fd01b2b76737674d1620.png';
+import inlineEditingImage from '../../assets/f6e425edff364cc7cd50ba1f74bfc30bf3db5ec6.png';
+import detailPanelImage from '../../assets/79e63a1d22d5667699b96a19a5c8428139d88c4d.png';
+import savedViewImage from '../../assets/0aeab7d4f182c40087086a3783548432d6dadfda.png';
+import inspectAnythingImage from '../../assets/de93007e81a93a9f4f2830ab2bbe3f481ac01efb.png';
+import adoptionRateChart from '../../assets/ef69127d71a414cc81a8ee24801079604380e5d3.png';
+import linkedInPost from '../../assets/8dc52a220068a6d1f11c22cb0a6994e090c75941.png';
 
 export default function ClariInspect({ onBack }: { onBack: () => void }) {
   return (
