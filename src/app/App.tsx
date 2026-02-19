@@ -13,8 +13,6 @@ import inspectImage from '../assets/54b90e77863c7a9eb2a202af9b37e496cd9c5036.png
 import truckxImage from '../assets/aa950f68e6d55d60c0f07808733c377ba575db21.png';
 import zooImage from '../assets/c33bef13a957dc2425da9f0ce2db3a7b1feef4f9.png';
 import werImage from '../assets/ddaf5b1ccd9f3876fff02ee76adc2a63805f4100.png';
-import pawhopeImage from '../assets/0af675ad794c6d8146d79d88652e101ce573c8bf.png';
-import mirrorImage from '../assets/0a1f815953be331a674d0b2883056f2921107d25.png';
 import haloImage from '../assets/f8f8beb74828ac64992844fcd57e01d8adde048a.png';
 
 // Project data
@@ -61,22 +59,6 @@ const projects = [
     hasCase: true,
     link: null,
     externalLink: 'http://yang-sundesign.com/wer.html'
-  },
-  {
-    id: 6,
-    title: 'Pawhope',
-    description: 'PAW HOPE is a non-profit application for pet adoption from shelter and track the stray animals.',
-    image: pawhopeImage,
-    hasCase: true,
-    link: null
-  },
-  {
-    id: 7,
-    title: 'MirrorMirror',
-    description: 'Pre-owned luxury product shopping application with a third-part authenticity check.',
-    image: mirrorImage,
-    hasCase: true,
-    link: null
   },
   {
     id: 8,
