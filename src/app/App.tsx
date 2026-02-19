@@ -41,7 +41,8 @@ const projects = [
     description: 'TruckX Fleet is designed for fleet managers and dispatchers to view and manage their drivers\' logs, track their location, and optimize utilization.',
     image: truckxImage,
     hasCase: true,
-    link: null
+    link: null,
+    externalLink: 'http://yang-sundesign.com/truckx.html'
   },
   {
     id: 4,
@@ -201,7 +202,18 @@ function HomePage() {
                     Case Study
                   </button>
                 )}
-                {project.hasCase && !project.link && (
+                {project.hasCase && (project as any).externalLink && !project.link && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open((project as any).externalLink, '_blank', 'noopener,noreferrer');
+                    }}
+                    className="px-6 py-2 bg-white border border-[#d0d0d0] text-[#1a1a1a] text-[13px] hover:bg-[#f0f0f0] transition-colors rounded-sm"
+                  >
+                    Case Study
+                  </button>
+                )}
+                {project.hasCase && !project.link && !(project as any).externalLink && (
                   <button
                     className="px-6 py-2 bg-white border border-[#d0d0d0] text-[#cccccc] text-[13px] rounded-sm cursor-not-allowed"
                     disabled
