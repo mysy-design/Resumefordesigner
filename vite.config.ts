@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'path'
+import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
@@ -10,6 +11,23 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    {
+      name: 'agu-route',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url === '/agu' || req.url === '/agu/') {
+            const html = fs.readFileSync(
+              path.resolve(__dirname, 'src/app/gupiao/index.html'),
+              'utf-8'
+            )
+            res.setHeader('Content-Type', 'text/html')
+            res.end(html)
+            return
+          }
+          next()
+        })
+      },
+    },
   ],
   resolve: {
     alias: {
